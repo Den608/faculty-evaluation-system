@@ -66,7 +66,7 @@ autoLogin();
     </div>
 
     <!--------popup add student ------------>
-    <form action="/assets/API/signup.php" method="post" enctype="multipart/form-data">
+    <form action="assets/php/signup.php" method="post" enctype="multipart/form-data">
         <div class="popup-background" id="popup-background">
             <div class="popup-users">
                 <div class="popup-add-top">
