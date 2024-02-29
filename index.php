@@ -22,19 +22,20 @@ autoLogin();
 </head>
 
 <body>
-    <form action=index.php method=post>
-        <div class="login-container">
-            <div class="login-left">
-                <p class="login-title">Systems Plus Computer College Caloocan</p>
-                <p class="login-quote">A leading and globally competitive institution of learning through service and innovation.</p>
-            </div>
+    <div class="login-container">
+        <div class="login-left">
+            <p class="login-title">Systems Plus Computer College Caloocan</p>
+            <p class="login-quote">A leading and globally competitive institution of learning through service and
+                innovation.</p>
+        </div>
 
-            <div class="login-right">
-                <div class="login-box">
-                    <div class="login-content">
-                        <div class="login-header">
-                            <h2>Sign In</h2>
-                        </div>
+        <div class="login-right">
+            <div class="login-box">
+                <div class="login-content">
+                    <div class="login-header">
+                        <h2>Sign In</h2>
+                    </div>
+                    <form action="index.php" method="post">
                         <div class="login-items">
                             <label for="login_id">User ID</label>
                             <input type="number" placeholder="Enter ID" name="login_id" id="login_id">
@@ -57,15 +58,15 @@ autoLogin();
                                 <option value="Admin">Admin</option>
                             </select>
                         </div>
-                        <a class="add-main" id="add-button">Activate your account</a>
-                    </div>
+                    </form>
+                    <button class="add-main" id="add-button">Activate your account</button>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 
     <!--------popup add student ------------>
-    <form action="index.php" method="post" enctype="multipart/form-data">
+    <form action="/assets/API/signup.php" method="post" enctype="multipart/form-data">
         <div class="popup-background" id="popup-background">
             <div class="popup-users">
                 <div class="popup-add-top">
@@ -92,8 +93,10 @@ autoLogin();
                     <div class="boxx">
                         <p class="P">Gender</p>
                         <div class="userscon1">
-                            <input type="radio" id="add_male" name="gender" value="Male" required><label for="add_male">Male</label>
-                            <input type="radio" id="add_female" name="gender" value="Female"><label for="add_female">Female</label>
+                            <input type="radio" id="add_male" name="gender" value="Male" required><label
+                                for="add_male">Male</label>
+                            <input type="radio" id="add_female" name="gender" value="Female"><label
+                                for="add_female">Female</label>
                         </div>
                     </div>
                     <div class="boxx">
@@ -105,7 +108,8 @@ autoLogin();
                     <div class="boxx">
                         <p class="P">Contact Number</p>
                         <div class="userscon">
-                            <input type="number" name="contact_no" autocomplete="off" placeholder="Contact Number" required>
+                            <input type="number" name="contact_no" autocomplete="off" placeholder="Contact Number"
+                                required>
                         </div>
                     </div>
                     <div class="boxx">
@@ -168,21 +172,33 @@ autoLogin();
                             <input type="text" name="reg_code" placeholder="Registration Code" required>
                         </div>
                     </div>
-                    <?php addStudentWCode() ?>
+                    
                     <div class="userscon">
-                        <button type="submit" name="addstudent" class="addbtn"><i class="fas fa-plus"></i> Activate Account</button>
+                        <button type="submit" class="addbtn"><i class="fas fa-plus"></i> Activate Account</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
     <script>
-        $("#add-button").click(function() {
+
+        var btnAdd = document.getElementById('add-button');
+        console.log(btnAdd)
+
+        // Add a click event listener to the button
+        btnAdd.addEventListener('click', function (e) {
             const addBackground = document.getElementById('popup-background');
             addBackground.style.display = "flex";
             $("#popup-background").show();
         });
-        $("#ex-add").click(function() {
+
+        // $("#add-button").click(function() {
+        //     const addBackground = document.getElementById('popup-background');
+        //     addBackground.style.display = "flex";
+        //     $("#popup-background").show();
+        // });
+
+        $("#ex-add").click(function () {
             $("#popup-background").hide();
         });
     </script>

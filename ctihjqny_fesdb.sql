@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2024 at 09:05 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Feb 29, 2024 at 06:56 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,6 +57,14 @@ CREATE TABLE `tb_courses` (
   `course_id` int(11) NOT NULL,
   `course_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_courses`
+--
+
+INSERT INTO `tb_courses` (`course_id`, `course_name`) VALUES
+(1, 'database'),
+(2, 'maths');
 
 -- --------------------------------------------------------
 
@@ -120,7 +128,7 @@ CREATE TABLE `tb_feedback` (
 CREATE TABLE `tb_login` (
   `login_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
-  `faculty_id` int(11) NOT NULL,
+  `faculty_id` int(11) DEFAULT NULL,
   `password` varchar(65) NOT NULL,
   `usertype` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -160,6 +168,14 @@ CREATE TABLE `tb_sections` (
   `section_id` int(11) NOT NULL,
   `section_name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tb_sections`
+--
+
+INSERT INTO `tb_sections` (`section_id`, `section_name`) VALUES
+(1, 'section1'),
+(2, 'section2');
 
 -- --------------------------------------------------------
 
@@ -345,6 +361,100 @@ ALTER TABLE `tb_subjects`
 --
 ALTER TABLE `tb_terms`
   ADD PRIMARY KEY (`term_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_active_eval`
+--
+ALTER TABLE `tb_active_eval`
+  MODIFY `active_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_comments`
+--
+ALTER TABLE `tb_comments`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_courses`
+--
+ALTER TABLE `tb_courses`
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tb_evaluations`
+--
+ALTER TABLE `tb_evaluations`
+  MODIFY `evaluation_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_faculty`
+--
+ALTER TABLE `tb_faculty`
+  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_feedback`
+--
+ALTER TABLE `tb_feedback`
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_login`
+--
+ALTER TABLE `tb_login`
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tb_questions`
+--
+ALTER TABLE `tb_questions`
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_ratings`
+--
+ALTER TABLE `tb_ratings`
+  MODIFY `rating_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_sections`
+--
+ALTER TABLE `tb_sections`
+  MODIFY `section_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tb_sections_relation`
+--
+ALTER TABLE `tb_sections_relation`
+  MODIFY `secrel_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_sentiment`
+--
+ALTER TABLE `tb_sentiment`
+  MODIFY `sentiment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_students`
+--
+ALTER TABLE `tb_students`
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- AUTO_INCREMENT for table `tb_subjects`
+--
+ALTER TABLE `tb_subjects`
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tb_terms`
+--
+ALTER TABLE `tb_terms`
+  MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

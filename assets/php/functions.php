@@ -290,65 +290,60 @@ function addStudent()
 //Adds a new student in the record.
 function addStudentWCode()
 {
-    if (isset($_POST['addstudent'])) {
-        require 'connection.php';
-        // include 'connection.php';
+    require 'connection.php';
+    // include 'connection.php';
 
-        $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
-        $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $gender = mysqli_real_escape_string($conn, $_POST['gender']);
-        $yearlevel = mysqli_real_escape_string($conn, $_POST['yearlevel']);
-        $contact_no = mysqli_real_escape_string($conn, $_POST['contact_no']);
-        $address = mysqli_real_escape_string($conn, $_POST['address']);
-        $status = mysqli_real_escape_string($conn, $_POST['status']);
-        $course = mysqli_real_escape_string($conn, $_POST['course_id']);
-        $section = mysqli_real_escape_string($conn, $_POST['section_id']);
-        
-        // $email = $_POST['email'];
-        // $gender = $_POST['gender'];
-        // $yearlevel = $_POST['yearlevel'];
-        // $contact_no = $_POST['contact_no'];
-        // $address = mysqli_real_escape_string($conn, $_POST['address']);
-        // $status = $_POST['status'];
-        // $course = $_POST['course_id'];
-        // $section = $_POST['section_id'];
-        // $reg_code = $_POST['reg_code'];
-        $reg_code = mysqli_real_escape_string($conn, $_POST['reg_code_id']);
-        $reg_conf = "$lastname$contact_no";
+    $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
+    $yearlevel = mysqli_real_escape_string($conn, $_POST['yearlevel']);
+    $contact_no = mysqli_real_escape_string($conn, $_POST['contact_no']);
+    $address = mysqli_real_escape_string($conn, $_POST['address']);
+    $status = mysqli_real_escape_string($conn, $_POST['status']);
+    $course = mysqli_real_escape_string($conn, $_POST['course_id']);
+    $section = mysqli_real_escape_string($conn, $_POST['section_id']);
 
-        if ($_FILES['photo'] == UPLOAD_ERR_NO_FILE) {
-            $photo = 'standard.png';
-        } else {
-            include './assets/php/uploadPhoto_add.php';
-        }
+    // $email = $_POST['email'];
+    // $gender = $_POST['gender'];
+    // $yearlevel = $_POST['yearlevel'];
+    // $contact_no = $_POST['contact_no'];
+    // $address = mysqli_real_escape_string($conn, $_POST['address']);
+    // $status = $_POST['status'];
+    // $course = $_POST['course_id'];
+    // $section = $_POST['section_id'];
+    // $reg_code = $_POST['reg_code'];
+    $reg_code = mysqli_real_escape_string($conn, $_POST['reg_code']);
+    $reg_conf = $lastname . $contact_no;
 
-        //Add Student
-        if ($reg_code == $reg_conf) {
-            $sql = "INSERT INTO tb_students (student_id, firstname, lastname, email, gender, yearlevel, contact_no, address, status, photo, course_id, section_id) VALUES (null, '$firstname', '$lastname', '$email', '$gender', '$yearlevel', $contact_no, '$address', '$status', '$photo', '$course', '$section')";
-            if (mysqli_query($conn, $sql)) {
-                $sql2 = "SELECT student_id FROM tb_students ORDER BY student_id DESC LIMIT 1;";
-                $result = mysqli_query($conn, $sql2);
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                    $sid_value = $row["student_id"];
-                }
-                $sql3 = "INSERT INTO tb_login (login_id, student_id, faculty_id, password, usertype) VALUES (null, $sid_value, null, '$lastname$contact_no', 'Student')";
-                if (mysqli_query($conn, $sql3)) {
-                    ?>
-                    <script src="/assets/js/addAlert.js"></script>
-                    <?php
-                } else {
-                    ?>
-                    <!-- <script src="{{asset('js/errorAlert.js')}}"></script> -->
+    if ($_FILES['photo']['error'] == UPLOAD_ERR_NO_FILE) {
+        $photo = 'standard.png';
+    } else {
+        include './assets/php/uploadPhoto_add.php';
+    }
 
-                    <script src="/assets/js/errorAlert.js"></script>
-                    <?php
-                }
+    //Add Student
+    if ($reg_code == $reg_conf) {
+        $sql = "INSERT INTO tb_students (firstname, lastname, email, gender, yearlevel, contact_no, address, status, photo, course_id, section_id) VALUES ('$firstname', '$lastname', '$email', '$gender', '$yearlevel', '$contact_no', '$address', '$status', '$photo', '$course', '$section')";
+
+        echo $sql;
+        if (mysqli_query($conn, $sql)) {
+            $sql2 = "SELECT student_id FROM tb_students ORDER BY student_id DESC LIMIT 1;";
+
+            $result = mysqli_query($conn, $sql2);
+            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                $sid_value = $row["student_id"];
+            }
+            $sql3 = "INSERT INTO tb_login (student_id, faculty_id, password, usertype) VALUES ($sid_value, null, '$lastname$contact_no', 'Student')";
+            if (mysqli_query($conn, $sql3)) {
+                ?>
+                <script src="/assets/js/addAlert.js"></script>
+                <?php
             } else {
                 ?>
-                <script src="/assets/js/errorAlert.js"></script>
                 <!-- <script src="{{asset('js/errorAlert.js')}}"></script> -->
 
+                <script src="/assets/js/errorAlert.js"></script>
                 <?php
             }
         } else {
@@ -358,8 +353,14 @@ function addStudentWCode()
 
             <?php
         }
-        mysqli_close($conn);
+    } else {
+        ?>
+        <script src="/assets/js/errorAlert.js"></script>
+        <!-- <script src="{{asset('js/errorAlert.js')}}"></script> -->
+
+        <?php
     }
+    mysqli_close($conn);
 }
 
 //Adds a new faculty member in the record.
@@ -374,7 +375,7 @@ function addFaculty()
         $contact_no = $_POST['contact_no'];
         $address = mysqli_real_escape_string($conn, $_POST['address']);
 
-        if ($_FILES['photo'] == UPLOAD_ERR_NO_FILE) {
+        if ($_FILES['photo']['error'] == UPLOAD_ERR_NO_FILE) {
             $photo = 'standard.png';
         } else {
             include './assets/php/uploadPhoto_add.php';
