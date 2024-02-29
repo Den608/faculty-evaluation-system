@@ -1,23 +1,23 @@
-const body = document.querySelector("body"),
-    sidebar = body.querySelector(".sidebar-nav"),
-    toggle = body.querySelector(".toggle");
-const toggleHeader = body.querySelector(".toggleHeader");
-const logoutpop = document.getElementById('popup');
+var content = document.querySelector("body");
+var sidecontent = content.querySelector(".sidebar-nav");
+var toggle = content.querySelector(".toggle");
+var toggleHeader = content.querySelector(".toggleHeader");
+var logoutpop = document.getElementById('popup');
 
-const addBackground = document.getElementById('popup-background');
-const addButton = document.getElementById('add-button');
-const editBackground = document.getElementById('edit-popup-background');
-const editButton = document.getElementById('edit-button');
-const ex = document.getElementById('ex-add');
-const exedit = document.getElementById('ex-edit');
+var addBackground = document.getElementById('popup-background');
+var addButton = document.getElementById('add-button');
+var editBackground = document.getElementById('edit-popup-background');
+var editButton = document.getElementById('edit-button');
+var ex = document.getElementById('ex-add');
+var exedit = document.getElementById('ex-edit');
 
 
 toggleHeader.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
+    sidecontent.classList.toggle("close");
 })
 
 toggle.addEventListener("click", () => {
-    sidebar.classList.toggle("close");
+    sidecontent.classList.toggle("close");
 })
 
 $(document).ready(function () {

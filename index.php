@@ -18,7 +18,7 @@ autoLogin();
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <title>Sign In | Faculty Evaluation System</title>
-    <link rel="icon" type="image/png" href="./images/systems-plus-computer-college-logo.png">
+    <link rel="icon" type="image/png" href="/images/systems-plus-computer-college-logo.png">
 </head>
 
 <body>

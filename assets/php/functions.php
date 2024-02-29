@@ -1552,7 +1552,7 @@ function facultyCount()
 {
     include 'connection.php';
     global $count;
-    $sql = "SELECT faculty_id, firstname, lastname, email, gender, contact_no, address, photo FROM tb_faculty ORDER BY faculty_id";
+    $sql = "SELECT faculty_id, firstname, lastname, email, gender, /* contact_no, */ address, photo FROM tb_faculty ORDER BY faculty_id";
     $result = mysqli_query($conn, $sql);
     $count = mysqli_num_rows($result);
     echo "$count";
