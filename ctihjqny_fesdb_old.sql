@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 29, 2024 at 12:35 PM
+-- Generation Time: Feb 29, 2024 at 06:56 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -101,13 +101,6 @@ CREATE TABLE `tb_faculty` (
   `photo` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tb_faculty`
---
-
-INSERT INTO `tb_faculty` (`faculty_id`, `firstname`, `lastname`, `email`, `gender`, `conatct_no`, `address`, `photo`) VALUES
-(1, 'Daniel', 'Han', 'test@gmail.com', 'Male', '123', '123', 'image_2024_02_25T23_59_51_590Z.png');
-
 -- --------------------------------------------------------
 
 --
@@ -139,13 +132,6 @@ CREATE TABLE `tb_login` (
   `password` varchar(65) NOT NULL,
   `usertype` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_login`
---
-
-INSERT INTO `tb_login` (`login_id`, `student_id`, `faculty_id`, `password`, `usertype`) VALUES
-(3, 136, 1, 'Han123', 'Student');
 
 -- --------------------------------------------------------
 
@@ -239,13 +225,6 @@ CREATE TABLE `tb_students` (
   `course_id` int(11) NOT NULL,
   `section_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tb_students`
---
-
-INSERT INTO `tb_students` (`student_id`, `firstname`, `lastname`, `email`, `gender`, `yearlevel`, `contact_no`, `address`, `status`, `photo`, `course_id`, `section_id`) VALUES
-(136, 'Daniel', 'Han', 'test@gmail.com', 'Male', 'Grade 1', '123', '123', 'Enrolled', 'image_2024_02_25T23_59_51_590Z.png', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -415,7 +394,7 @@ ALTER TABLE `tb_evaluations`
 -- AUTO_INCREMENT for table `tb_faculty`
 --
 ALTER TABLE `tb_faculty`
-  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `faculty_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_feedback`
@@ -427,7 +406,7 @@ ALTER TABLE `tb_feedback`
 -- AUTO_INCREMENT for table `tb_login`
 --
 ALTER TABLE `tb_login`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_questions`
@@ -463,7 +442,7 @@ ALTER TABLE `tb_sentiment`
 -- AUTO_INCREMENT for table `tb_students`
 --
 ALTER TABLE `tb_students`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tb_subjects`
