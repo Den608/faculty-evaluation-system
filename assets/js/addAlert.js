@@ -3,5 +3,5 @@ Swal.fire({
     title: 'Record Added!',
     text: 'Record has been added successfully!',
 }).then(function () {
-    window.href = "http://localhost/faculty-evaluation-system-main/index.php";
+    window.href = "http://localhost/faculty-evaluation-system/index.php";
 });
