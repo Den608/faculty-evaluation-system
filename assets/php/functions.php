@@ -368,7 +368,7 @@ function addStudentWCode()
     ?>
     <script>
         setTimeout(function() {
-            window.location.href = "http://localhost/faculty-evaluation-system-main/";
+            window.location.href = "http://localhost/faculty-evaluation-system/";
         }, 1000);
     </script>
     <?php

@@ -5,8 +5,8 @@
             <i class='fas fa-bars toggleHeader'></i>
         </div>
         <div class="right">
-            <a class="usernamee"><img src="./images/uploads/<?php echo $_SESSION['photo'] ?>" alt="" class="profile" id="popup-btn" onclick="LogOutFunction()"></a>
-            <a class="username1" id="popup-btn" onclick="LogOutFunction()"><?php echo $_SESSION['username'] ?></a>
+            <a class="usernamee" href="./assets/php/logout-user.php"><img src="./images/uploads/<?php echo $_SESSION['photo'] ?>" alt="" class="profile" id="popup-btn"></a>
+            <a class="username1" href="./assets/php/logout-user.php" id="popup-btn"><?php echo $_SESSION['username'] ?></a>
         </div>
     </div>
 </header>
@@ -36,3 +36,5 @@
         </div>
     </div>
 </div>
+
+<script src="./assets/js/script.js"></script>
