@@ -89,6 +89,11 @@ function login()
                         $usertype = $row["usertype"];
                     }
                     loginSession($login_id, $usertype);
+                    ?>
+                    <script>
+                        //destination
+                    </script>
+                    <?php
                 } else {
                     echo 'Your ID or Password is incorrect!';
                 }
@@ -319,14 +324,13 @@ function addStudentWCode()
     if ($_FILES['photo']['error'] == UPLOAD_ERR_NO_FILE) {
         $photo = 'standard.png';
     } else {
-        include './assets/php/uploadPhoto_add.php';
+        include './uploadPhoto_add.php';
     }
 
     //Add Student
     if ($reg_code == $reg_conf) {
         $sql = "INSERT INTO tb_students (firstname, lastname, email, gender, yearlevel, contact_no, address, status, photo, course_id, section_id) VALUES ('$firstname', '$lastname', '$email', '$gender', '$yearlevel', '$contact_no', '$address', '$status', '$photo', '$course', '$section')";
 
-        echo $sql;
         if (mysqli_query($conn, $sql)) {
             $sql2 = "SELECT student_id FROM tb_students ORDER BY student_id DESC LIMIT 1;";
 
@@ -337,30 +341,37 @@ function addStudentWCode()
             $sql3 = "INSERT INTO tb_login (student_id, faculty_id, password, usertype) VALUES ($sid_value, null, '$lastname$contact_no', 'Student')";
             if (mysqli_query($conn, $sql3)) {
                 ?>
-                <script src="/assets/js/addAlert.js"></script>
+                <script src="../js/addAlert.js"></script>
                 <?php
             } else {
                 ?>
                 <!-- <script src="{{asset('js/errorAlert.js')}}"></script> -->
 
-                <script src="/assets/js/errorAlert.js"></script>
+                <script src="../js/errorAlert.js"></script>
                 <?php
             }
         } else {
             ?>
-            <script src="/assets/js/errorAlert.js"></script>
+            <script src="../js/errorAlert.js"></script>
             <!-- <script src="{{asset('js/errorAlert.js')}}"></script> -->
 
             <?php
         }
     } else {
         ?>
-        <script src="/assets/js/errorAlert.js"></script>
+        <script src="../js/errorAlert.js"></script>
         <!-- <script src="{{asset('js/errorAlert.js')}}"></script> -->
 
         <?php
     }
     mysqli_close($conn);
+    ?>
+    <script>
+        setTimeout(function() {
+            window.location.href = "http://localhost/faculty-evaluation-system-main/";
+        }, 1000);
+    </script>
+    <?php
 }
 
 //Adds a new faculty member in the record.

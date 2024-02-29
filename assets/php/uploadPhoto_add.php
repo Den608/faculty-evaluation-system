@@ -1,5 +1,5 @@
 <?php
-$dir = "./images/uploads/";
+$dir = "../../images/uploads/";
 $filename = $_FILES['photo']['name'];
 $file_tmp_name = $_FILES['photo']['tmp_name'];
 $ext = array("jpg", "png", "jpeg", "bmp");
